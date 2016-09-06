@@ -1,2 +1,13 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+{{#each books}}
+
+  <p>book: {{this.id}}
+  <p>{{this.title}}</p>
+  <p>{{this.description}}</p>
+
+  {{#each this.authors}}
+    {{this.last_name}}, {{this.first_name}}
+  {{/each}}
+
+  <hr>
+
+{{/each}}

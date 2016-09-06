@@ -1,6 +1,8 @@
 var environment = process.env.NODE_ENV || 'development';
+var config = require('../knexfile.js')[environment];
 var knex = require('knex')(config);
-// add in to avid circular dependencies
-Bookshelf.plugin('registry');
-// require bookshelf with knex
-module.exports = require('bookshelf')(knex);
+var bookshelf = require('bookshelf')(knex);
+
+bookshelf.plugin('registry');
+
+module.exports = bookshelf;
